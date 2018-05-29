@@ -1,3 +1,2 @@
 echo "Hello World! :D"
-
-echo "no u"
+echo "Goodbye World! D:"
