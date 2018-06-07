@@ -10,11 +10,17 @@ defmodule Cool do
   end
 
   def process(options) do
-    IO.puts("Hello #{options[:name]}")
+    msg = "Hello #{options[:name]}"
+
+    IO.puts(if options[:loud], do: String.upcase(msg), else: msg)
   end
 
   defp parse_args(args) do
-    {options, _, _} = OptionParser.parse(args, switches: [name: :string])
+    {options, args, invalid} = OptionParser.parse(args, switches: [name: :string, loud: :boolean])
+    IO.inspect(args)
+    IO.inspect(invalid)
     options
   end
 end
+
+Cool.main(System.argv())
